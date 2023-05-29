@@ -74,15 +74,15 @@ function Home(props) {
   );
 }
 
-export async function getStaticProps() {
-  const users_raw = await fetch('http://192.168.1.254:5443/api/users')
-  const users = await users_raw.json()
-  const users_data = users.results;
-  return {
-    props: {
-      users_data
-    }
-  }
-}
+// export async function getStaticProps() {
+//   const users_raw = await fetch('http://192.168.1.254:5443/api/users')
+//   const users = await users_raw.json()
+//   const users_data = users.results;
+//   return {
+//     props: {
+//       users_data
+//     }
+//   }
+// }
 
 export default Home
