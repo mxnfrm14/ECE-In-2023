@@ -18,17 +18,85 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+# ECE-In-2023
+Layout : ![](C:\Users\erwan\AppData\Roaming\marktext\images\2023-05-28-20-04-16-image.png)
 
-To learn more about Next.js, take a look at the following resources:
+Contenus d'un post :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+lieu de photo/vidéo, date/heure, comment vous vous sentez  
+ou qu’est-ce que vous faites.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Commentaires sur les posts
 
-## Deploy on Vercel
+Deux type de posts, classique ou album (contenant des images repérées à la  
+fois dans ses propres photos et dans celles des autres)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Commun - Header
+
+## Commun - Footer
+
+- Coordonnées pour contacter l’administrateur de l’ECE In
+
+- Mentions légales
+
+## Accueil
+
+- Présentation de ECE In
+
+- Section évènements de la semain
+
+- Feed qui contient les évènements sur la personne connectée et ceux de ses amis, du plus récent au plus ancien + peut l’aimer, le commenter, ou le partager
+
+- Publication de photos ou vidéos avec lien unique pour chaque post
+
+- Publication du CV, différents statues 
+
+- Plan de localisation du siège ECE In
+
+## Mon réseau
+
+- Listes tous les amis avec nom et photo, et description
+
+## Pages de chaque utilisateur
+
+- Nom et photo, et description, listes d'amis. Possibilités d'ajouter ami
+
+## Vous
+
+- Description complète du profil
+
+- Choix photo et image de fond
+
+- Frise chronologique des formations du plus récent au plus anciens
+
+- Projets
+
+- Upload de CV
+
+- Génération de CV à partir de XML en PDF ou HTML
+
+- Faire ou supprimer des posts 
+
+- Choix si contenu en privé ou public
+
+- Un auteur peut publier ses photos vidéos et événements et les renommer, modifier ses  paramètres
+
+## Notifications
+
+- Evenements de l'ecole et partenaires
+- Job ou bourse d'un ami
+
+## Messagerie
+
+- Listes des conversations avec historique
+
+- Visioconférence par service externe
+
+## Emplois
+
+- Notifications d'emplois disponibles avec catégories de postes, filtrables (permanents ou temporaires, stages, apprentissages,  
+  etc.)
+
+- Chaque entreprise avec son nom logo etc
