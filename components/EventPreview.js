@@ -24,7 +24,7 @@ export default function EventPreview(props) {
             <h2 className="card-title">Journée porte ouverte</h2>
             <p>Le 25 Avril 2023</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">En savoir plus</button>
+              <button className="btn btn-secondary">En savoir plus</button>
             </div>
           </div>
         </div>

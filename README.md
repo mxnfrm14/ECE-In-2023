@@ -114,11 +114,8 @@ ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 
 
 ```
-
 Ouvrez le lien : http://localhost:3000
-
 Attendez !
-
 Et hop C'est bon pour vous !
 
 # ECE-In-2023

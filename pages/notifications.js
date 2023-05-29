@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import UserPresentationCard from '../components/UserPresentationCard';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';

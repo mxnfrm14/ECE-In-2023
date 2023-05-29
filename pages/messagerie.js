@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import UserPresentationCard from '../components/UserPresentationCard';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
@@ -17,15 +16,11 @@ function Messagerie(props) {
       </Head>
 
       <Layout>
+        
+        <div>
+            
+        </div> 
 
-
-      <div className="chat chat-start">
-        <div className="chat-bubble">It's over Anakin, <br/>I have the high ground.</div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-bubble">You underestimate my power!</div>
-      </div>
-      
       
 
       </Layout>   

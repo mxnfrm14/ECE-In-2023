@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import UserPresentationCard from '../components/UserPresentationCard';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
@@ -18,7 +17,7 @@ function Profil(props) {
 
       <Layout>
         
-        <div className='m-8'>
+        <div>
             
         <ul className="steps steps-vertical">
         <li className="step step-primary">Register</li>
@@ -29,7 +28,7 @@ function Profil(props) {
         
         </div> 
 
-        
+      
 
       </Layout>   
     </>
