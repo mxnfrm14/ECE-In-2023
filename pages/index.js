@@ -121,7 +121,7 @@ function Home(props) {
 }
 
 export async function getStaticProps() {
-  const users_raw = await fetch('http://localhost:3000/api/users')
+  const users_raw = await fetch('http://localhost:3000/api/getUsers')
   const users = await users_raw.json()
   const users_data = users.results;
   return {
