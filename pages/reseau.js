@@ -107,11 +107,11 @@ function Reseau(props) {
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                     <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
+                        <img src="https://media.licdn.com/dms/image/D4E35AQGaffmYJDL0YQ/profile-framedphoto-shrink_100_100/0/1675284070749?e=1686009600&v=beta&t=q71zKmpLXlxsOX8OZquT_E_1j2pVlj9u0_H_AJnouvY" alt="Avatar" />
                     </div>
                     </div>
                     <div>
-                    <div className="font-bold">Marjy Ferencz</div>
+                    <div className="font-bold">BORGES Agathe</div>
                     <div className="text-sm opacity-50">Russia</div>
                     </div>
                 </div>
