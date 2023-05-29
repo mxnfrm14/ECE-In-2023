@@ -1,12 +1,9 @@
 import mysql from 'mysql2/promise'
+import { db_credential } from './db_credential.js';
 
 export default async function handler(req, res) {
 
-  const dbconnection = await mysql.createConnection({
-    host: '192.168.1.254',
-    database: 'ecein',
-    user: 'root'
-  });
+  const dbconnection = await mysql.createConnection(db_credential);
 
   try {
     
