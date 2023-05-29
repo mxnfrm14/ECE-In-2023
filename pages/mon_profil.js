@@ -18,7 +18,7 @@ function Profil(props) {
 
       <Layout>
         
-        <div>
+        <div className='m-8'>
             
         <ul className="steps steps-vertical">
         <li className="step step-primary">Register</li>
@@ -29,7 +29,7 @@ function Profil(props) {
         
         </div> 
 
-      
+        
 
       </Layout>   
     </>
