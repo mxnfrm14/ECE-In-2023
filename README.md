@@ -119,7 +119,7 @@ Attendez !
 Et hop C'est bon pour vous !
 
 # ECE-In-2023
-Layout : ![](C:\Users\erwan\AppData\Roaming\marktext\images\2023-05-28-20-04-16-image.png)
+
 
 Contenus d'un post :
 
