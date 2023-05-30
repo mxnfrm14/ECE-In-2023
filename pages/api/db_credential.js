@@ -1,5 +1,5 @@
 export const db_credential = {
-    host: '192.168.1.254',
+    host: 'localhost',
     database: 'ecein',
     user: 'root'
 };

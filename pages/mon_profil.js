@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
+import UserPresentationCard from '../components/UserPresentationCard';
 
 function Profil(props) {
   const isAuthenticated = true;
@@ -16,6 +17,8 @@ function Profil(props) {
       </Head>
 
       <Layout>
+
+      <UserPresentationCard/>
         
         <div className="m-4">
           {/* verifier si tous les champs du compte sont remplis */}
