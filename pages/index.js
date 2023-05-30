@@ -3,14 +3,17 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
-import {AiOutlinePlus} from 'react-icons/ai';
+import {AiOutlinePlus, AiFillPushpin} from 'react-icons/ai';
 import {BsGlobeAmericas, BsPeopleFill, BsFillLockFill} from 'react-icons/bs';
+import {BsMailbox2, BsFillTelephoneFill} from 'react-icons/bs';
+import MapComponent from '@/components/MapComponent';
 
 function Home(props) {
   const isAuthenticated = true;
 
   const content = props.users_data;
   // console.log(content);
+
   return (
     <>
       <Head>
@@ -115,6 +118,37 @@ function Home(props) {
 
       </div>
 
+      {/* Contact */}
+
+      <div className="container mx-auto flex flex-col items-center gap-10" id="contact">
+
+        <div className="navbar bg-neutral text-primary-content rounded-xl mt-6">
+          <a className="btn btn-ghost normal-case text-xl">Nous contacter</a>
+        </div>
+        <div className="hero h-[32rem] w-11/12 rounded-xl bg-base-200">
+          <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
+            <div className="h-[28rem] w-full">
+              <MapComponent/>
+            </div>
+            <div className=''>
+              <h1 className="text-5xl font-bold">Une question pour l'administrateur ?</h1>
+              <p className="py-6">N'hésites pas à le contacter par mail, téléphone, courrier ou directement en te rendant sur place, il te répondra au plus vite. </p>
+              <div className="py-6">
+                
+              <ul>
+                <li className='flex gap-2 items-center'> <BsMailbox2/> <a href='mailto:contact@ece.fr' target='_blank' >contact@ece.fr </a> </li>
+                <li className='flex gap-2 items-center'> <BsFillTelephoneFill/> <a href="tel:+33144493030" target='_blank'> 01 44 49 30 30 </a></li>
+                <li className='flex gap-2 items-center'> <AiFillPushpin/> <a href="https://goo.gl/maps/ceY6WWRXCnGktTky8" target='_blank'> 10 Rue Sextius Michel, 75015 Paris </a>  </li>
+                
+              </ul>
+
+              </div>
+              <a href='https://www.ece.fr/' target='_blank' className="btn btn-primary">DÉCOUVRIR L'ÉCOLE</a>
+            </div>
+          </div>
+        </div>
+        </div>
+      
       </Layout>   
     </>
   );
