@@ -17,15 +17,23 @@ function Profil(props) {
 
       <Layout>
         
-        <div>
-            
-        <ul className="steps steps-vertical">
-        <li className="step step-primary">Register</li>
-        <li className="step step-primary">Choose plan</li>
-        <li className="step">Purchase</li>
-        <li className="step">Receive Product</li>
-        </ul>
-        
+        <div className="m-4">
+          {/* verifier si tous les champs du compte sont remplis */}
+          
+          {/* si incomplet afficher msg l'indiquand : */}
+          <div className="grid justify-items-center">
+            <p>Votre profil est presque rempli !</p>
+            <br></br>
+            <div className="radial-progress text-primary" style={{"--value":70}}>70%</div>
+          </div>
+          
+          <ul className="steps steps-vertical">
+            <li className="step step-primary">Register</li>
+            <li className="step step-primary">Choose plan</li>
+            <li className="step">Purchase</li>
+            <li className="step">Receive Product</li>
+          </ul>
+          
         </div> 
 
       
