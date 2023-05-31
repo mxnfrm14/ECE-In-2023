@@ -5,11 +5,13 @@ import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
 import UserPresentationCard from '../components/UserPresentationCard';
 
+
 function Profil(props) {
   const isAuthenticated = true;
 
   const content = props.users_data;
   // console.log(content);
+
   return (
     <>
       <Head>
@@ -18,24 +20,36 @@ function Profil(props) {
 
       <Layout>
 
-      <UserPresentationCard/>
         
         <div className="m-4">
-          {/* verifier si tous les champs du compte sont remplis */}
-          
-          {/* si incomplet afficher msg l'indiquand : */}
-          <div className="grid justify-items-center">
-            <p>Votre profil est presque rempli !</p>
-            <br></br>
-            <div className="radial-progress text-primary" style={{"--value":70}}>70%</div>
+
+        {/* ETAT DU PROFIL : verifier si tous les champs du compte sont remplis */}
+        {/* si incomplet afficher msg l'indiquand : */}
+          <div className="grid grid-cols-4 justify-items-center"> 
+            <div className="col-span-2 row-span-2"> 
+              <UserPresentationCard/> 
+            </div>
+           
+            <div className="grid justify-items-center content-center">
+              <p> Votre profil est presque rempli !</p>
+              <br></br>
+              <div className="radial-progress" style={{"--value":70}}>70%</div>
+            </div>
+            
+            <ul className="steps steps-vertical">
+              <li className="step step-primary">Photo</li>
+              <li className="step ">Image de fond</li>
+              <li className="step step-primary">Description</li>
+              <li className="step">Formation(s)</li>
+            </ul>
+           
           </div>
+
+          {/* INFOS PROFIL */}
+          {/* Afficher à partir de la BDD */}
           
-          <ul className="steps steps-vertical">
-            <li className="step step-primary">Register</li>
-            <li className="step step-primary">Choose plan</li>
-            <li className="step">Purchase</li>
-            <li className="step">Receive Product</li>
-          </ul>
+         
+
           
         </div> 
 
