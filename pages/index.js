@@ -125,9 +125,9 @@ function Home(props) {
         <div className="navbar bg-neutral text-primary-content rounded-xl mt-6">
           <a className="btn btn-ghost normal-case text-xl">Nous contacter</a>
         </div>
-        <div className="hero h-[32rem] w-11/12 rounded-xl bg-base-200">
+        <div className="hero md:h-[32rem] w-11/12 rounded-xl bg-base-200">
           <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
-            <div className="h-[28rem] w-full">
+            <div className="md:h-[28rem] w-full">
               <MapComponent/>
             </div>
             <div className=''>
