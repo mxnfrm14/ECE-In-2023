@@ -12,6 +12,35 @@ function Profil(props) {
   //const content = props.users_data;
   const utilisateur = props.utilisateur_data;
   console.log(utilisateur);
+  var varPhoto = "step-primary";
+  var varImFond = "step-primary";
+  var varDescr = "step-primary";
+  var varForma = "";
+  var varTxt = "Votre profil est presque rempli !";
+  let nbChampsRemplis = 3;
+
+  //verifier si l'utilisateur a complété toutes ses données 
+  if(utilisateur[0].PHOTO==""){
+    varPhoto = "";
+    nbChampsRemplis --;
+  }
+  if(utilisateur[0].BACKING===null){
+    varImFond = "";
+    nbChampsRemplis --;
+  }  
+  if(utilisateur[0].DESCRIPTION==""){
+    varDescr = "";
+    nbChampsRemplis --;
+  }  
+  /* Autre requete à faire
+  if(utilisateur.FORMATION==null){
+    varForma = "";
+  } */
+
+  nbChampsRemplis = (nbChampsRemplis/4)*100
+  if(nbChampsRemplis==100){
+    varTxt = "Votre profil est rempli !";
+  }
 
   return (
     <>
@@ -27,33 +56,35 @@ function Profil(props) {
           <div className="grid grid-cols-5 gap-x-2 justify-items-center"> 
             <div className="col-span-2 row-span-2"> 
 
-             {/* Fonction remplie avec les retour de la requete SQL dans api/getMonProfil.js*/}
+            {/* Fonction remplie avec les retour de la requete SQL dans api/getMonProfil.js*/}
             {utilisateur.map((post) => (
-              <UserPresentationCard
-                identifiant={post.IDENTIFIANT}
-                nom={post.NOM}
-                pseudo={post.PSEUDO}
-                descript={post.DESCRIPTION}
-                pfp={post.PHOTO}
-                imgfond={post.BACKIMG}
-               />  ))}
+                <UserPresentationCard
+                  identifiant={post.IDENTIFIANT}
+                  nom={post.NOM}
+                  pseudo={post.PSEUDO}
+                  descript={post.DESCRIPTION}
+                  pfp={post.PHOTO}
+                  imgfond={post.BACKIMG}
+                />  
+              ))}
             </div>
+            
             
             {/* ETAT DU PROFIL */}
             {/* Verifier quels champs sont remplis (à faire ou sinn supprimer)
             S'il en manque les afficher et le % de ce qu'il reste à remplir : */}
 
               <div className="grid justify-items-center content-center">
-                <p> Votre profil est presque rempli !</p>
+                <p> {varTxt} </p>
                 <br></br>
-                <div className="radial-progress" style={{"--value":70}}>70%</div>
+                <div className="radial-progress" style={{ "--value": nbChampsRemplis }}>{nbChampsRemplis}%</div>
               </div>
               
               <ul className="steps steps-vertical mt-6 ">
-                <li className="step step-primary">Photo</li>
-                <li className="step ">Image de fond</li>
-                <li className="step step-primary">Description</li>
-                <li className="step">Formation(s)</li>
+                <li className={`step ${varPhoto}`}> Photo</li>
+                <li className={`step ${varImFond}`}> Image de fond</li>
+                <li className={`step ${varDescr}`}> Description</li>
+                <li className={`step ${varForma}`}> Formation(s)</li>
               </ul>
             
             </div>
