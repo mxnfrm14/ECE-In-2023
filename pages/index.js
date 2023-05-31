@@ -11,8 +11,9 @@ import MapComponent from '@/components/MapComponent';
 function Home(props) {
   const isAuthenticated = true;
 
-  const content = props.users_data;
-  // console.log(content);
+  const users = props.users_data;
+  const posts = props.posts_data;
+  console.log(posts);
 
   return (
     <>
@@ -108,13 +109,26 @@ function Home(props) {
           </div>
         </div>
 
-        {content.map((user) => (
+        {/* {users.map((user) => (
           <PostPreview
             key={user.USERID}
             pseudo={user.PSEUDO}
             role={user.ROLE}
           />
+        ))} */}
+
+        {posts.map((post) => (
+          <PostPreview
+            key={post.POSTID}
+            pseudo={post.PSEUDO}
+            role={post.ROLE}
+            content={post.TEXTE}
+            lieu = {post.LIEU}
+            date = {post.DATE}
+            heure = {post.HEURE}
+          />
         ))}
+
 
       </div>
 
@@ -158,9 +172,15 @@ export async function getStaticProps() {
   const users_raw = await fetch('http://localhost:3000/api/getUsers')
   const users = await users_raw.json()
   const users_data = users.results;
+
+  const posts_raw = await fetch('http://localhost:3000/api/getPosts')
+  const posts = await posts_raw.json()
+  const posts_data = posts.results;
+
   return {
     props: {
-      users_data
+      users_data,
+      posts_data
     }
   }
 }

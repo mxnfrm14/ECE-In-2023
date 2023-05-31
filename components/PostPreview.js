@@ -3,16 +3,15 @@ import { AiOutlineComment } from 'react-icons/ai';
 import { BiShare, BiCopy, BiMailSend } from 'react-icons/bi';
 import {FiTwitter} from 'react-icons/fi';
 
-function Post({ pseudo, role }) {
+function Post({ pseudo, role, content, lieu, date, heure }) {
   return (
     <>
     <figure class="md:flex bg-base-200 rounded-xl p-8 md:p-0 w-11/12">
         <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src="https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0" alt="" width="384" height="512"/>
-        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4  w-full">
           <div className="card-body">
                 <p class="text-lg font-medium">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    {content}
                 </p>
               <figcaption class="font-medium">
                 <h2 className="card-title text-primary">
@@ -20,6 +19,9 @@ function Post({ pseudo, role }) {
                 </h2>
                 <div class="text-slate-700 dark:text-slate-500">
                   {role}
+                </div>
+                <div class="text-slate-700 dark:text-slate-500 w-full flex">
+                  À {lieu} <span className='ml-auto'>Le { date + ' à ' + heure }</span>
                 </div>
               </figcaption>
           </div>
