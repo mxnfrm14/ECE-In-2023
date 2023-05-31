@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
+import Notif from '../components/Notif'
 
 function Notifications(props) {
   const isAuthenticated = true;
@@ -16,13 +17,22 @@ function Notifications(props) {
       </Head>
 
       <Layout>
-        
-        <div>
-            
-        
-        
-        </div> 
 
+      <div class="container mx-auto">
+        
+      <h1 className="mb-5 text-5xl font-bold mt-6">
+              Mes Notifications
+      </h1>
+
+      {/* <ul className="menu bg-base-100 w-full"> */}
+
+    <Notif/>
+    <Notif/>
+    <Notif/>
+
+{/* </ul> */}
+    
+      </div>
       
 
       </Layout>   
