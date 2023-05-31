@@ -117,6 +117,7 @@ function Home(props) {
           />
         ))} */}
 
+        {/* Afficher les publications à partir de la BDD */}
         {posts.map((post) => (
           <PostPreview
             key={post.POSTID}
