@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     
     dbconnection.connect();
     console.log('DB connected');
-    const query = 'SELECT * FROM utilisateur WHERE USERID=1';
+    const query = `SELECT * FROM utilisateur`;
     const values = [];
     const [data] = await dbconnection.query(query, values);
     dbconnection.end();
@@ -20,3 +20,4 @@ export default async function handler(req, res) {
   }
 
 }
+

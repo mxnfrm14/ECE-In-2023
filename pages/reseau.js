@@ -1,15 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import EventPreview from '../components/EventPreview';
-import PostPreview from '../components/PostPreview';
 import TableReseau from '../components/TableReseau';
 
 function Reseau(props) {
   const isAuthenticated = true;
 
-  const content = props.users_data;
-    console.log(content);
+  // const content = props.users_data;
+  //   console.log(content);
   return (
     <>
       <Head>
@@ -17,8 +15,17 @@ function Reseau(props) {
       </Head>
 
       <Layout>
+
+      <div class="container mx-auto">
         
-        {content.map((user) => (
+        <h1 className="mb-5 text-5xl font-bold mt-6">
+                Mon Réseau
+        </h1>
+  
+  
+        
+        
+        {/* {content.map((user) => (
           <TableReseau
           nom={user.NOM}
           prenom={user.PRENOM}
@@ -27,11 +34,12 @@ function Reseau(props) {
           description={user.DESCRIPTION}
           role={user.ROLE}
           />
-        ))}
+        ))} */}
+        <TableReseau/>
 
         
       
-         
+         </div>
         
 
         
@@ -41,16 +49,16 @@ function Reseau(props) {
   );
 }
 
-export async function getStaticProps() {
-  const users_raw = await fetch('http://localhost:3000/api/getReseau')
-  const users = await users_raw.json()
-  const users_data = users.results;
-  return {
-    props: {
-      users_data
-    }
-  }
-}
+// export async function getStaticProps() {
+//   const users_raw = await fetch('http://localhost:3000/api/getReseau')
+//   const users = await users_raw.json()
+//   const users_data = users.results;
+//   return {
+//     props: {
+//       users_data
+//     }
+//   }
+// }
 
 
 export default Reseau
