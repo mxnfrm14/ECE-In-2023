@@ -18,14 +18,12 @@ function Reseau(props) {
 
       <div class="container mx-auto">
         
-        <h1 className="mb-5 text-5xl font-bold mt-6">
+        <h1 className="m-5 text-5xl font-bold mt-6">
                 Mon Réseau
         </h1>
-  
-  
         
-        
-        {/* {content.map((user) => (
+        <div className="m-5 "> 
+          {/* {content.map((user) => (
           <TableReseau
           nom={user.NOM}
           prenom={user.PRENOM}
@@ -35,7 +33,10 @@ function Reseau(props) {
           role={user.ROLE}
           />
         ))} */}
-        <TableReseau/>
+
+          <TableReseau/>
+        </div>
+        
 
         
       

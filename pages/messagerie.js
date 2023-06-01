@@ -16,21 +16,33 @@ function Messagerie(props) {
 
       <Layout>
 
-        <h1 className="mb-5 text-5xl font-bold mt-6">
+        <h1 className="m-5 text-5xl font-bold mt-6">
           Messagerie
         </h1>
         
-     {/** J'ai pas encore reussi à creer un composant bulle de lsg :((
-      <textMsg 
-        texte = "HOLAaa"
-        nomDest = "nom"
-        pfpDest = "admin.jpg"
-        recu0Envoiye1 = "1"
-      /> 
-    */}
+        <div className='my-9 grid grid-cols-3 gap-x-2 justify-items-center'>
+          {/** Les discussions */}
+          <div className='space-y-4  max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
+            <div className="mt-4 mx-2 rounded-md badge-primary"> <center> Vos discussions : </center> </div>
+            <div>
+              <div className="m-2 btn btn-outline flex"> Discussion 1 avec Admin 1</div> 
+              <div className="m-2 btn btn-outline flex"> Discussion 2</div>
+            </div>
+          </div>
+
+
+          {/** Une discussion
+           * J'ai pas encore reussi à creer un composant bulle de lsg :((
+            <textMsg 
+              texte = "HOLAaa"
+              nomDest = "nom"
+              pfpDest = "admin.jpg"
+              recu0Envoiye1 = "1"
+            /> 
+          */}
 
             {/** Zone des échanges */}
-            <div className='m-5 space-y-4  max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
+          <div className='space-y-4 col-span-2 max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
           {/**MSG DE L'INTERLOCUTEUR */}
           <div className="m-4 chat chat-start">
             {/**pfp */}
@@ -52,7 +64,11 @@ function Messagerie(props) {
             <div className="chat-bubble chat-bubble-primary">message envoyé zhnkz zjfnkje edfk fedf eeeeeeeeeeeeeeeeee z</div>
           </div>
 
-        </div> 
+        </div>   
+
+
+        </div>
+
 
       
 

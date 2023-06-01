@@ -21,11 +21,14 @@ function Emplois(props) {
         
       <div class="container mx-auto">
         
-        <h1 className="mb-5 text-5xl font-bold mt-6">
+        <h1 className="m-5 text-5xl font-bold mt-6">
                 Mes Emplois
         </h1>
 
-        <TableEmplois/>
+        <div className="m-5 ">
+          <TableEmplois/>
+        </div>
+        
   
 
         </div>

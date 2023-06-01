@@ -20,16 +20,17 @@ function Notifications(props) {
 
       <div class="container mx-auto">
         
-      <h1 className="mb-5 text-5xl font-bold mt-6">
+      <h1 className="m-5 text-5xl font-bold mt-6">
               Mes Notifications
       </h1>
 
       {/* <ul className="menu bg-base-100 w-full"> */}
 
-    <Notif/>
-    <Notif/>
-    <Notif/>
-
+      <div className="mx-5 ">
+        <Notif/>
+        <Notif/>
+        <Notif/>
+      </div>
 {/* </ul> */}
     
       </div>
