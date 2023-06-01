@@ -3,11 +3,13 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 
 import { useState } from 'react';
+// import { useForm } from "react-hook-form";
 
 function Login(props) {
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); 
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
