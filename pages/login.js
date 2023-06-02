@@ -48,8 +48,8 @@ function Login(props) {
                       <span className="label-text">Email</span>
                     </label>
                     <label className="input-group">
-                      <span>Email</span>
-                      <input type="text" {...register("Email", { required: true })} placeholder="info@site.com" className="input input-bordered w-full" />
+                      <span>EmaclassName="input input-bordered w-full" il</span>
+                      <input type="text" {...register("Email", { required: true })} placeholder="info@site.com" />
                     </label>
                   </div>
                 </div>

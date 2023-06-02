@@ -6,3 +6,22 @@
       @apply scroll-smooth;
     }
   }
+
+  .alert.hiddenAlert {
+    /* Other Tailwind CSS classes */
+    opacity: 0;
+    transform: translateY(-100%);
+    transition-property: opacity, transform;
+    transition-duration: 300ms;
+    }
+  
+    .alert.blockAlert {
+    opacity: 1;
+    transform: translateY(0);
+    transition-property: opacity, transform;
+    transition-duration: 300ms;
+    }
+    .alert-error {
+      background: #f87272;
+      color: black;
+    }

@@ -7,7 +7,8 @@ const header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const handleLogout = () => {
-    setIsAuthenticated(false); 
+    setIsAuthenticated(false);
+    localStorage.removeItem('user'); 
     window.location.href = '/login';
   };
 
