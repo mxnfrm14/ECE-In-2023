@@ -22,9 +22,9 @@ function Messagerie(props) {
         
         <div className='my-9 grid grid-cols-3 gap-x-2 justify-items-center'>
           {/** Les discussions */}
-          <div className='space-y-4  max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
+          <div className='space-y-4 w-4/6 mx-auto bg-base-300 rounded-lg shadow-md'>
             <div className="mt-4 mx-2 rounded-md badge-primary"> <center> Vos discussions : </center> </div>
-            <div>
+            <div className="mx-1">
               <div className="m-2 btn btn-outline flex"> Discussion 1 avec Admin 1</div> 
               <div className="m-2 btn btn-outline flex"> Discussion 2</div>
             </div>
@@ -42,7 +42,7 @@ function Messagerie(props) {
           */}
 
             {/** Zone des échanges */}
-          <div className='space-y-4 col-span-2 max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
+          <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
           {/**MSG DE L'INTERLOCUTEUR */}
           <div className="m-4 chat chat-start">
             {/**pfp */}
@@ -61,7 +61,7 @@ function Messagerie(props) {
 
           {/**MSG DE L'UTILISATEUR*/}
           <div className="m-8 chat chat-end">
-            <div className="chat-bubble chat-bubble-primary">message envoyé zhnkz zjfnkje edfk fedf eeeeeeeeeeeeeeeeee z</div>
+            <div className="chat-bubble chat-bubble-primary">message envoyé zhnkz zjfnkje edfk fedf eeddddd  dbfdvb dvdb dfeeeeeeeeeeeeee z</div>
           </div>
 
         </div>   
