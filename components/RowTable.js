@@ -25,9 +25,9 @@ export default function RowTable({ nom, prenom, pseudo, photo, description, role
                 <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
             </td>
             <td>{role}</td>
-            <th>
+            {/* <th>
                 <button className="btn btn-ghost btn-xs">details</button>
-            </th>
+            </th> */}
         </tr>
     )
 };

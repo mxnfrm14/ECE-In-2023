@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import TableReseau from '../components/TableReseau';
+import RowTable from '@/components/RowTable';
 
 function Reseau(props) {
   const isAuthenticated = true;
 
-  // const content = props.users_data;
-  //   console.log(content);
+  const content = props.users_data;
+    console.log(content);
   return (
     <>
       <Head>
@@ -23,8 +23,28 @@ function Reseau(props) {
         </h1>
         
         <div className="m-5 "> 
-          {/* {content.map((user) => (
-          <TableReseau
+
+        <div className="overflow-x-auto w-full">
+            <table className="table w-full">
+                {/* head */}
+                <thead>
+                    <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" className="checkbox" />
+                            </label>
+                        </th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Role</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+          {content.map((user) => (
+          
+          <RowTable
           nom={user.NOM}
           prenom={user.PRENOM}
           pseudo={user.PSEUDO}
@@ -32,9 +52,23 @@ function Reseau(props) {
           description={user.DESCRIPTION}
           role={user.ROLE}
           />
-        ))} */}
+          
+        ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>NOM</th>
+                        <th>Description</th>
+                        <th>Role</th>
+                        
+                    </tr>
+                </tfoot>
 
-          <TableReseau/>
+            </table>
+        </div>
+
+
         </div>
         
 
@@ -50,16 +84,16 @@ function Reseau(props) {
   );
 }
 
-// export async function getStaticProps() {
-//   const users_raw = await fetch('http://localhost:3000/api/getReseau')
-//   const users = await users_raw.json()
-//   const users_data = users.results;
-//   return {
-//     props: {
-//       users_data
-//     }
-//   }
-// }
+export async function getStaticProps() {
+  const users_raw = await fetch('http://localhost:3000/api/getReseau')
+  const users = await users_raw.json()
+  const users_data = users.results;
+  return {
+    props: {
+      users_data
+    }
+  }
+}
 
 
 export default Reseau
