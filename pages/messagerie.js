@@ -8,7 +8,7 @@ import EcrireMsg from '../components/EcrireMsg';
   const isAuthenticated = true;
 
   const content = props.users_data;
-  // console.log(content);
+  console.log(content);
   return (
     <>
       <Head>
@@ -40,8 +40,20 @@ import EcrireMsg from '../components/EcrireMsg';
                 texte = "HOLAaa"
                 nomdest = "nom"
                 pfpdest = "admin.jpg"
-                recu0envoye1 = "1"
+                recu0envoye1 = "0"
               /> 
+
+              {/* Fonction d'affichage remplie avec les résultats de la requete SQL dans api/getMsgs.js */}
+              {content.map((post) => (
+                <TextMsg
+                  texte = {post.TEXTE}
+                  nomdest = {post.USERID}
+                  pfpdest = {post.PSEUDO}
+                  recu0envoye1 = "1" //creer une fonction ici ou ds getMsgs pour determ si l'USERID du msg est le meme que l'utilisateur ou nn
+                />  
+                //et creer une fonction pour séparer les discussions entre les gens. Autre requete pour obtenir le(s) USERID des destinataires ? (puis une requete par discussion)
+                //puis apres faudra afficher selon la discussion cochée (donc recup valeur ici puis l'utiliser dans la requete)
+                ))} 
 
               <TextMsg
                 texte = "oui"
@@ -69,6 +81,21 @@ import EcrireMsg from '../components/EcrireMsg';
       </Layout>   
     </>
   );
+}
+
+
+
+export async function getStaticProps() {
+  
+  const users_raw = await fetch('http://localhost:3000/api/getMsgs')
+  const users = await users_raw.json()
+  const users_data = users.results;
+
+  return {
+    props: {
+      users_data
+    }
+  }
 }
 
 export default Messagerie

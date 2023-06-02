@@ -104,7 +104,7 @@ export async function getStaticProps() {
   const users = await users_raw.json()
   const users_data = users.results;*/
 
-  const utilisateur_raw = await fetch('http://localhost:3000/api/getMonProfil')
+  const utilisateur_raw = await fetch('http://localhost:3000/api/getMonProfil') //si on change pas getUser pas ok
   const utilisateur = await utilisateur_raw.json()
   const utilisateur_data = utilisateur.results;
 
