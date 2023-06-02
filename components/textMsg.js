@@ -1,4 +1,4 @@
-function textMsg({ texte, nomDest, pfpDest, recu0Envoiye1 }) {
+function textMsg({ texte, nomdest, pfpdest, recu0envoye1 }) {
     /* jsp si ça fonction mais deja ce qui est pas commenté s'affiche pas
     //MSG DE L'UTILISATEUR
     var Msg=`
@@ -30,28 +30,16 @@ function textMsg({ texte, nomDest, pfpDest, recu0Envoiye1 }) {
 
     return (
 
-        <div className='m-5 space-y-4  max-w-md mx-auto bg-base-300 rounded-lg shadow-md'>
-            {/**MSG DE L'INTERLOCUTEUR */}
-            <div className="m-4 chat chat-start">
+        <div className="m-4 chat chat-start">
             {/**pfp */}
             <div className="chat-image avatar">
-                <div className="w-10 rounded-full">
-                <img src="admin.jpg" />
-                </div>
+                <div className="w-10 rounded-full"> <img src= {pfpdest} /> </div>
             </div>
             {/**pseudo */}
-            <div className="chat-header">
-                Obi-Wan Kenobi
-            </div>
+            <div className="chat-header"> {nomdest} </div>
             {/**message */}
-            <div className="chat-bubble chat-bubble-secondary">message reçu</div>
-            </div>
-
-            {/**MSG DE L'UTILISATEUR*/}
-            <div className="m-8 chat chat-end">
-            <div className="chat-bubble chat-bubble-primary">message envoyé zhnkz zjfnkje edfk fedf eeeeeeeeeeeeeeeeee z</div>
-            </div>
-        </div>      
+            <div className="chat-bubble chat-bubble-secondary"> {texte} </div>
+         </div>  
 
     );
   };

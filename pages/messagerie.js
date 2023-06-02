@@ -31,18 +31,25 @@ function Messagerie(props) {
           </div>
 
 
-          {/** Une discussion
-           * J'ai pas encore reussi à creer un composant bulle de lsg :((
-            <textMsg 
-              texte = "HOLAaa"
-              nomDest = "nom"
-              pfpDest = "admin.jpg"
-              recu0Envoiye1 = "1"
-            /> 
-          */}
+          {/** Une discussion 
+           * J'ai pas encore reussi à creer un composant bulle de lsg :(( */}
+           <div>
+              <textMsg
+                texte = "HOLAaa"
+                nomdest = "nom"
+                pfpdest = "admin.jpg"
+                recu0envoye1 = "1"
+              /> 
+          
+
+           </div>
+            
+          
 
             {/** Zone des échanges */}
           <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
+
+            
           {/**MSG DE L'INTERLOCUTEUR */}
           <div className="m-4 chat chat-start">
             {/**pfp */}
