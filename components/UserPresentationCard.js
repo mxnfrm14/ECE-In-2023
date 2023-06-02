@@ -6,7 +6,7 @@ function UserPresentationCard({ identifiant, nom, pseudo, descript, pfp, imgfond
           <p className="mt-3"> <img src={pfp} alt="- pfp -" width="80" className="rounded-full" />  </p>
           <p className="mt-3"> <span className="text-base text-indigo-300" >Identifiant : </span> {identifiant}</p>
           <p className="mt-3"> <span className="text-base text-indigo-300" >Nom : </span> {nom}</p>
-          <p className="mt-3"><span className="text-base text-indigo-300" >Pseudo : </span> {pseudo}</p>
+          <p className="mt-3"><span className="text-base text-indigo-300" >Pseudo : </span> @{pseudo}</p>
           <p className="mt-3"><span className="text-base text-indigo-300" >Description : </span> {descript}</p>
           <p className="mt-3"><span className="text-base text-indigo-300" >Votre image de fond : </span> </p>
           <p className="mt-3"> <img src={imgfond} alt="- banière -"  /> </p>

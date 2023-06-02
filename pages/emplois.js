@@ -1,11 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import EventPreview from '../components/EventPreview';
-import PostPreview from '../components/PostPreview';
 import TableEmplois from '../components/TableEmplois';
-
-
 
 
 function Emplois(props) {
@@ -24,7 +20,7 @@ function Emplois(props) {
         <div class="container mx-auto">
 
           <h1 className="m-5 text-5xl font-bold mt-6">
-            Mes Emplois
+            Les Offres d'Emplois
           </h1>
 
           <div className="m-5 ">
@@ -46,17 +42,17 @@ function Emplois(props) {
                 </thead>
                 <tbody>
                   {content.map((user) => (
-                  <TableEmplois
-                  id={user.EMPLOIID}
-                  titre={user.TITRE}
-                  type={user.TYPE}
-                  remuneration={user.REMUNERATION}
-                  lieu={user.LIEU}
-                  entreprise={user.ENTREPRISE}
-                  infos={user.INFOS}
-                  />
-                  
-                ))}
+                    <TableEmplois
+                      id={user.EMPLOIID}
+                      titre={user.TITRE}
+                      type={user.TYPE}
+                      remuneration={user.REMUNERATION}
+                      lieu={user.LIEU}
+                      entreprise={user.ENTREPRISE}
+                      infos={user.INFOS}
+                    />
+
+                  ))}
                 </tbody>
               </table>
 

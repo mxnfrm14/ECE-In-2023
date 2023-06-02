@@ -15,7 +15,7 @@ export default function RowTable({ nom, prenom, pseudo, photo, description, role
                     </div>
                     <div>
                         <div className="font-bold">{nom} {prenom}</div>
-                        <div className="text-sm opacity-50">{pseudo}</div>
+                        <div className="text-sm opacity-50">@{pseudo}</div>
                     </div>
                 </div>
             </td>
