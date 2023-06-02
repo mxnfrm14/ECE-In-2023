@@ -22,7 +22,7 @@ export default function RowTable({ nom, prenom, pseudo, photo, description, role
             <td>
                 {description}
                 <br/>
-                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
             </td>
             <td>{role}</td>
             {/* <th>
