@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
 import Notif from '../components/Notif'
+import withAuth from './withAuth';
 
 function Notifications(props) {
   const isAuthenticated = true;
@@ -52,4 +53,4 @@ function Notifications(props) {
 //   }
 // }
 
-export default Notifications
+export default withAuth(Notifications)

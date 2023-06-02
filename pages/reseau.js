@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import RowTable from '@/components/RowTable';
+import withAuth from './withAuth';
 
 function Reseau(props) {
   const isAuthenticated = true;
@@ -96,4 +97,4 @@ export async function getStaticProps() {
 }
 
 
-export default Reseau
+export default withAuth(Reseau);

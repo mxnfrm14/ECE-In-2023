@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import EventPreview from '../components/EventPreview';
 import PostPreview from '../components/PostPreview';
 import UserPresentationCard from '../components/UserPresentationCard';
-
+import withAuth from './withAuth';
 
 function Profil(props) {
   const isAuthenticated = true;
@@ -116,4 +116,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Profil
+export default withAuth(Profil)

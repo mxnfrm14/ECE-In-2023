@@ -7,6 +7,7 @@ import {AiOutlinePlus, AiFillPushpin} from 'react-icons/ai';
 import {BsGlobeAmericas, BsPeopleFill, BsFillLockFill} from 'react-icons/bs';
 import {BsMailbox2, BsFillTelephoneFill} from 'react-icons/bs';
 import MapComponent from '@/components/MapComponent';
+import withAuth from './withAuth';
 
 function Home(props) {
   const isAuthenticated = true;
@@ -186,4 +187,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Home
+export default withAuth(Home)

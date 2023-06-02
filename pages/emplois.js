@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import TableEmplois from '../components/TableEmplois';
-
+import withAuth from './withAuth';
 
 function Emplois(props) {
   const isAuthenticated = true;
@@ -73,7 +73,7 @@ function Emplois(props) {
 
 
 
-export default Emplois
+export default withAuth(Emplois)
 
 export async function getStaticProps() {
   const users_raw = await fetch('http://localhost:3000/api/getEmplois')

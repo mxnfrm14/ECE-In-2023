@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import TextMsg from '../components/textMsg';
 import EcrireMsg from '../components/EcrireMsg';
+import withAuth from './withAuth';
 
  function Messagerie(props) {
   const isAuthenticated = true;
@@ -98,4 +99,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Messagerie
+export default withAuth(Messagerie)

@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import { Component, useState } from 'react';
 import { set } from 'react-hook-form';
 import { useForm } from "react-hook-form";
-
+import LoginForm from '@/components/LoginForm';
 
 
 function Login(props) {
@@ -40,7 +40,7 @@ function Login(props) {
               <h1 className="text-5xl font-bold">Se connecter</h1>
               <p className="py-6">Connectes-toi avec ton compte afin de commencer à échanger avec ton réseau ! </p>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
+            {/* <form onSubmit={handleSubmit(onSubmit)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
               <div className="card-body">
                 <div className="mb-4">
                   <div className="form-control">
@@ -75,7 +75,8 @@ function Login(props) {
                   <button type='submit' className="btn btn-primary w-full">Se connecter</button>
                 </div>
               </div>
-            </form>
+            </form> */}
+            <LoginForm />
           </div>
         </div>
 
