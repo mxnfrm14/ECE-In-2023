@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import textMsg from '../components/textMsg';
+import ConvComponent from '../components/textMsg';
 
 function Messagerie(props) {
   const isAuthenticated = true;
@@ -34,7 +34,7 @@ function Messagerie(props) {
           {/** Une discussion 
            * J'ai pas encore reussi à creer un composant bulle de lsg :(( */}
            <div>
-              <textMsg
+              <ConvComponent
                 texte = "HOLAaa"
                 nomdest = "nom"
                 pfpdest = "admin.jpg"
