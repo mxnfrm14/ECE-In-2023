@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../components/Layout';
-import ConvComponent from '../components/textMsg';
+import TextMsg from '../components/textMsg';
+import EcrireMsg from '../components/EcrireMsg';
 
-function Messagerie(props) {
+ function Messagerie(props) {
   const isAuthenticated = true;
 
   const content = props.users_data;
@@ -31,47 +32,33 @@ function Messagerie(props) {
           </div>
 
 
-          {/** Une discussion 
-           * J'ai pas encore reussi à creer un composant bulle de lsg :(( */}
-           <div>
-              <ConvComponent
+          {/** Zone d'une discussion  */}
+           <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
+              {/** creer une boucle pr charger ts les msgs?
+               * Un message  */}
+              <TextMsg
                 texte = "HOLAaa"
                 nomdest = "nom"
                 pfpdest = "admin.jpg"
                 recu0envoye1 = "1"
               /> 
-          
 
+              <TextMsg
+                texte = "oui"
+                nomdest = "nom"
+                pfpdest = "admin.jpg"
+                recu0envoye1 = "0"
+              />
+              <TextMsg
+                texte = "oui"
+                nomdest = "nom"
+                pfpdest = "admin.jpg"
+                recu0envoye1 = "1"
+              />  
+
+              <EcrireMsg/>
            </div>
             
-          
-
-            {/** Zone des échanges */}
-          <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
-
-            
-          {/**MSG DE L'INTERLOCUTEUR */}
-          <div className="m-4 chat chat-start">
-            {/**pfp */}
-            <div className="chat-image avatar">
-              <div className="w-10 rounded-full">
-                <img src="admin.jpg" />
-              </div>
-            </div>
-            {/**pseudo */}
-            <div className="chat-header">
-              Obi-Wan Kenobi
-            </div>
-            {/**message */}
-            <div className="chat-bubble chat-bubble-secondary">message reçu</div>
-          </div>
-
-          {/**MSG DE L'UTILISATEUR*/}
-          <div className="m-8 chat chat-end">
-            <div className="chat-bubble chat-bubble-primary">message envoyé zhnkz zjfnkje edfk fedf eeddddd  dbfdvb dvdb dfeeeeeeeeeeeeee z</div>
-          </div>
-
-        </div>   
 
 
         </div>

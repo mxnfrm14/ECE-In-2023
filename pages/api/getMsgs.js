@@ -10,11 +10,15 @@ export default async function handler(req, res) {
     dbconnection.connect();
     console.log('DB connected');
     const query = `
-    SELECT message.*
-    FROM message
-    JOIN amis ON message.FRIENDID = amis.FRIENDID
-    WHERE amis.USERID1 = 3 OR amis.USERID2 = 3;
-  `; ///Rajouter ensuite la table utilisateurs pour avoir pseudo et pfp
+    SELECT message.*, utilisateur.*
+    FROM message 
+    JOIN amis 
+      ON message.FRIENDID = amis.FRIENDID 
+    JOIN utilisateur 
+      ON (utilisateur.USERID = amis.USERID1 OR utilisateur.USERID = amis.USERID2) 
+      AND utilisateur.USERID = message.USERID 
+    WHERE (amis.USERID1 = 3 OR amis.USERID2 = 3);
+    `; //on obtient les informations des messages envoyés et toutes les infos sur l'utilisateur qui l'envoie
     const values = [];
     const [data] = await dbconnection.query(query, values);
     dbconnection.end();
