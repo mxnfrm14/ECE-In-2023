@@ -4,12 +4,44 @@ import Layout from '../components/Layout';
 import TextMsg from '../components/textMsg';
 import EcrireMsg from '../components/EcrireMsg';
 import withAuth from './withAuth';
+import { useEffect, useState } from 'react';
 
  function Messagerie(props) {
   const isAuthenticated = true;
 
   const content = props.users_data;
   console.log(content);
+  const [iduser, setIdUser] = useState(0);
+  const [compt, setCompt] = useState(0);
+  const[sensMsg, setSensMsg] = useState(0); //0 ou 1 considere comme msg reçu par defaut
+
+  //récuperer l'identifiant (mail/nom) de la personne connectée
+  useEffect(() => { //pour eviter erreur d'"hydration", va attendre d'avoir les valeurs pour charger page
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        setIdUser(parsedUser.id);
+      }
+    } catch (error) {
+      console.log('Erreur lors du parsing du JSON depuis le localStorage');
+    }
+  }, []);
+  console.log("iduser :"+iduser);
+
+  console.log("content: "+content.length);
+  //savoir si c'est un msg reçu ou envoyé
+  for(let i=0; i<content.length; i++){
+    console.log("content :"+content[i].USERID);
+    
+    //si le msg est envoyé par la personne connectée
+    if(content[i].USERID == iduser){
+      //le msg est envoyé par l'utilisateur (et non reçu)
+      setSensMsg(1);
+      console.log("msg envoye :");
+    }
+  }
+
   return (
     <>
       <Head>
