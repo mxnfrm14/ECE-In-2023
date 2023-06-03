@@ -41,21 +41,26 @@ function Profil(props) {
       }
     }
 
-    if (utilisateur[compt]?.PHOTO === '') {
-      setVarPhoto('');
-      setNbChampsRemplis((prevState) => prevState - 1);
+    let completedFields = 0;
+
+    if (utilisateur[compt]?.PHOTO !== '') {
+      completedFields++;
     }
-    if (utilisateur[compt]?.BACKING === null) {
-      setVarImFond('');
-      setNbChampsRemplis((prevState) => prevState - 1);
+    if (utilisateur[compt]?.BACKING !== null) {
+      completedFields++;
     }
-    if (utilisateur[compt]?.DESCRIPTION === '') {
-      setVarDescr('');
-      setNbChampsRemplis((prevState) => prevState - 1);
+    if (utilisateur[compt]?.DESCRIPTION !== '') {
+      completedFields++;
+    }
+    if (utilisateur[compt]?.FORMATION !== null) {
+      completedFields++;
     }
 
-    setNbChampsRemplis((prevState) => (prevState / 4) * 100);
-    if (nbChampsRemplis === 100) {
+    const totalFields = 4; 
+    const profileCompletion = (completedFields / totalFields) * 100;
+    setNbChampsRemplis(profileCompletion);
+
+    if (profileCompletion === 100) {
       setVarTxt('Votre profil est rempli !');
     }
   }, [iduser]);
