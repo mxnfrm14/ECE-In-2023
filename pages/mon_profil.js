@@ -6,29 +6,51 @@ import PostPreview from '../components/PostPreview';
 import UserPresentationCard from '../components/UserPresentationCard';
 import withAuth from './withAuth';
 
+//s'execute ds le navigateur et le serveur
 function Profil(props) {
   const isAuthenticated = true;
 
   //const content = props.users_data;
-  const utilisateur = props.utilisateur_data;
-  console.log(utilisateur);
+  const utilisateur = props.utilisateur_data; //ts les utilisateurs
+  var iduser= 0;
+  try{
+    iduser=JSON.parse(localStorage.getItem('user')).id;
+  }
+  catch (error){
+    iduser=0;
+    console.log("erreur parse json base locale");
+  }
+  console.log("valeur"+iduser); 
+  
   var varPhoto = "step-primary";
   var varImFond = "step-primary";
   var varDescr = "step-primary";
   var varForma = "";
   var varTxt = "Votre profil est presque rempli !";
   let nbChampsRemplis = 3;
+  //console.log("saluuuuuuuuuuuuuuuut"+utilisateur[iduser].USERID);
+  //console.log("nb recup:"+utilisateur.length);
 
+  var i=0, compt=0;
+  for(i=0; i<utilisateur.length; i++){
+    if(utilisateur[i].IDENTIFIANT==iduser){ //obtenir ID de la pers co 
+      compt=i;
+      break
+    }
+  }
+  console.log("numero stop:"+i);
+  console.log(compt);
+  //i=4;
   //verifier si l'utilisateur a complété toutes ses données 
-  if(utilisateur[0].PHOTO==""){
+  if(utilisateur[compt].PHOTO==""){
     varPhoto = "";
     nbChampsRemplis --;
   }
-  if(utilisateur[0].BACKING===null){
+  if(utilisateur[compt].BACKING===null){
     varImFond = "";
     nbChampsRemplis --;
   }  
-  if(utilisateur[0].DESCRIPTION==""){
+  if(utilisateur[compt].DESCRIPTION==""){
     varDescr = "";
     nbChampsRemplis --;
   }  
@@ -56,7 +78,8 @@ function Profil(props) {
           <div className="grid grid-cols-5 gap-x-2 justify-items-center"> 
             <div className="col-span-2 row-span-2"> 
 
-            {/* Fonction remplie avec les retour de la requete SQL dans api/getMonProfil.js*/}
+            {/* Fonction remplie avec les retour de la requete SQL dans api/getMonProfil.js */}
+            {/*
             {utilisateur.map((post) => (
                 <UserPresentationCard
                   identifiant={post.IDENTIFIANT}
@@ -66,7 +89,17 @@ function Profil(props) {
                   pfp={post.PHOTO}
                   imgfond={post.BACKIMG}
                 />  
-              ))}
+              ))}  */}
+              
+              <UserPresentationCard
+                  identifiant={utilisateur[compt].IDENTIFIANT}
+                  //identifiant={utilisateur[4].IDENTIFIANT}
+                  nom={utilisateur[4].NOM}
+                  pseudo={utilisateur[4].PSEUDO}
+                  descript={utilisateur[4].DESCRIPTION}
+                  pfp={utilisateur[4].PHOTO}
+                  imgfond={utilisateur[4].BACKIMG}
+              />  
             </div>
             
             
@@ -98,13 +131,17 @@ function Profil(props) {
   );
 }
 
+//s'execute ds le serveur
 export async function getStaticProps() {
   /*
   const users_raw = await fetch('http://localhost:3000/api/getUsers')
   const users = await users_raw.json()
   const users_data = users.results;*/
 
-  const utilisateur_raw = await fetch('http://localhost:3000/api/getMonProfil') //si on change pas getUser pas ok
+  //var IDutil = JSON.parse(localStorage.getItem('user')).id
+  //const utilisateur_raw = await fetch('http://localhost:3000/api/getUser?IDENTIFIANT='+IDutil) //si on change par getUser pas ok
+ 
+  const utilisateur_raw = await fetch('http://localhost:3000/api/getUsers') //si on change par getUser pas ok
   const utilisateur = await utilisateur_raw.json()
   const utilisateur_data = utilisateur.results;
 
