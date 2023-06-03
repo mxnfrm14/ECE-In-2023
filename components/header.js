@@ -19,7 +19,7 @@ const header = () => {
     const fetchData = async () => {
       try {
         const me = JSON.parse(localStorage.getItem('user')).id;
-        const users_raw = await fetch(`/api/getUser?IDENTIFIANT=${me}`);
+        const users_raw = await fetch(`http://localhost:3000/api/getUser?IDENTIFIANT=${me}`);
         const users = await users_raw.json();
         const users_data = users.results || [];
         setContent(users_data[0]);
@@ -109,10 +109,10 @@ const header = () => {
                 src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
               /> */}
               {
-                content.PHOTO ?
+                content?.PHOTO ?
                 <img
                 alt="Vous"
-                src={content.PHOTO}
+                src={content?.PHOTO}
               />
               :
               <img
@@ -128,7 +128,7 @@ const header = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 bg-neutral"
           >
             <li>
-              <h2>{content.PRENOM}</h2>
+              <h2>{content?.PRENOM}</h2>
             </li>
             <li>
               <a href="mon_profil" className="justify-between">Mon profil</a>

@@ -87,6 +87,7 @@ function Reseau(props) {
                 <tbody>
                   {content.map((user) => (
                     <RowTable
+                      link={user.NOM}
                       key={user.IDENTIFIANT}
                       nom={user.target_txt}
                       prenom={user.PRENOM}

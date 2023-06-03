@@ -4,7 +4,7 @@ function TableEmplois({id, titre, type, remuneration, lieu, entreprise, infos}) 
 
   return (
     
-          <tr class="bg-base-200">
+          <tr>
             <th>{id}</th>
             <td>{titre}</td>
             <td>{type}</td>
@@ -20,17 +20,3 @@ function TableEmplois({id, titre, type, remuneration, lieu, entreprise, infos}) 
 }
 
 export default TableEmplois;
-
-
-// pour faire l'import de la base de donné quasi la meme chose que pour Reseau
-
-// export async function getStaticProps() {
-//     const users_raw = await fetch('http://localhost:3000/api/getReseau')
-//     const users = await users_raw.json()
-//     const users_data = users.results;
-//     return {
-//         props: {
-//             users_data
-//         }
-//     }
-// }

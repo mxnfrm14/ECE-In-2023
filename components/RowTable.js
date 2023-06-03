@@ -1,4 +1,6 @@
-export default function RowTable({ nom, prenom, pseudo, photo, description, role }) {
+export default function RowTable({ link ,nom, prenom, pseudo, photo, description, role }) {
+    const cheminLocal = "/Profils/";
+    const cheminComplet = cheminLocal + link;
     return (
         <tr>
             <th>
@@ -10,7 +12,7 @@ export default function RowTable({ nom, prenom, pseudo, photo, description, role
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src={photo} alt="Avatar" />
+                            <a href={cheminComplet}><img src={photo} alt="Avatar" /></a>
                         </div>
                     </div>
                     <div>
