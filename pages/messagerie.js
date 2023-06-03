@@ -6,6 +6,23 @@ import EcrireMsg from '../components/EcrireMsg';
 import withAuth from './withAuth';
 import { useEffect, useState } from 'react';
 
+//fonction determine si l'USERID du msg est le meme que l'utilisateur ou nn
+  function quelSensMsg(idutil, idenvoyeur){
+    const[sensMsg, setSensMsg] = useState(0); //0 ou 1 considere comme msg reçu par defaut
+    useEffect(() => { 
+      //si le msg est envoyé par la personne connectée
+      if(idenvoyeur == idutil){
+        //le msg est envoyé par l'utilisateur (et non reçu)
+        setSensMsg(1);
+        console.log("msg envoye :"+idenvoyeur);
+      }
+
+    }, []);
+    return(
+        sensMsg
+    );
+  }
+
  function Messagerie(props) {
   const isAuthenticated = true;
 
@@ -26,21 +43,28 @@ import { useEffect, useState } from 'react';
     } catch (error) {
       console.log('Erreur lors du parsing du JSON depuis le localStorage');
     }
+
+
+    ///jsp ce que je dois mettre dedans et ds les crochets
   }, []);
   console.log("iduser :"+iduser);
 
-  console.log("content: "+content.length);
+  //console.log("content length: "+content.length);
+
   //savoir si c'est un msg reçu ou envoyé
+  //A MODIF FAUT FAIRE CA AU DERNIER MOMENT QD ON VA AFFICHER 1 SEUL MSG
+  /** 
   for(let i=0; i<content.length; i++){
-    console.log("content :"+content[i].USERID);
+    console.log("ID d'une pers msg :"+content[i].USERID);
     
     //si le msg est envoyé par la personne connectée
     if(content[i].USERID == iduser){
       //le msg est envoyé par l'utilisateur (et non reçu)
-      setSensMsg(1);
+      //setSensMsg(1);
       console.log("msg envoye :");
     }
   }
+  */
 
   return (
     <>
@@ -67,39 +91,20 @@ import { useEffect, useState } from 'react';
 
           {/** Zone d'une discussion  */}
            <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
-              {/** creer une boucle pr charger ts les msgs?
-               * Un message  */}
-              <TextMsg
-                texte = "HOLAaa"
-                nomdest = "nom"
-                pfpdest = "admin.jpg"
-                recu0envoye1 = "0"
-              /> 
-
+    
               {/* Fonction d'affichage remplie avec les résultats de la requete SQL dans api/getMsgs.js */}
               {content.map((post) => (
                 <TextMsg
                   texte = {post.TEXTE}
-                  nomdest = {post.USERID}
-                  pfpdest = {post.PSEUDO}
-                  recu0envoye1 = "1" //creer une fonction ici ou ds getMsgs pour determ si l'USERID du msg est le meme que l'utilisateur ou nn
+                  nomdest = {post.PRENOM +" "+ post.NOM}
+                  pfpdest = {post.PHOTO}
+                  recu0envoye1 = {quelSensMsg(iduser, post.USERID)} // 0 ou 1 renvoyé par la fonction
+                  
                 />  
-                //et creer une fonction pour séparer les discussions entre les gens. Autre requete pour obtenir le(s) USERID des destinataires ? (puis une requete par discussion)
+                //BONUS : fonction pour séparer les discussions entre les gens. 
+                //Autre requete pour obtenir le(s) USERID des destinataires ? (puis une requete par discussion)
                 //puis apres faudra afficher selon la discussion cochée (donc recup valeur ici puis l'utiliser dans la requete)
                 ))} 
-
-              <TextMsg
-                texte = "oui"
-                nomdest = "nom"
-                pfpdest = "admin.jpg"
-                recu0envoye1 = "0"
-              />
-              <TextMsg
-                texte = "oui"
-                nomdest = "nom"
-                pfpdest = "admin.jpg"
-                recu0envoye1 = "1"
-              />  
 
               <EcrireMsg/>
            </div>
