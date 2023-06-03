@@ -11,20 +11,21 @@ function Profil(props) {
   const isAuthenticated = true;
 
   const utilisateur = props.utilisateur_data;
-  const [iduser, setIdUser] = useState(0);
+  const [iduser, setIdUser] = useState('');
   const [compt, setCompt] = useState(0);
 
   useEffect(() => {
     try {
-      const storedUser = localStorage.getItem('user');
+      const storedUser = JSON.parse(localStorage.getItem('user')).id;
       if (storedUser) {
-        const parsedUser = JSON.parse(storedUser);
-        setIdUser(parsedUser.id);
+        setIdUser(storedUser);
+        console.log(iduser);
       }
     } catch (error) {
       console.log('Erreur lors du parsing du JSON depuis le localStorage');
     }
-  }, []);
+  }, [setIdUser]);
+  
 
   const [varPhoto, setVarPhoto] = useState('step-primary');
   const [varImFond, setVarImFond] = useState('step-primary');
@@ -43,10 +44,12 @@ function Profil(props) {
 
     let completedFields = 0;
 
+    console.log(utilisateur[compt]);
+
     if (utilisateur[compt]?.PHOTO !== '') {
       completedFields++;
     }
-    if (utilisateur[compt]?.BACKING !== null) {
+    if (utilisateur[compt]?.BACKIMG !== '') {
       completedFields++;
     }
     if (utilisateur[compt]?.DESCRIPTION !== '') {
