@@ -7,6 +7,7 @@ import PostPreview from '../components/PostPreview';
 import UserPresentationCard from '../components/UserPresentationCard';
 import withAuth from './withAuth';
 
+//page Mon profil
 function Profil(props) {
   const isAuthenticated = true;
 
@@ -14,6 +15,7 @@ function Profil(props) {
   const [iduser, setIdUser] = useState('');
   const [compt, setCompt] = useState(0);
 
+  //recuperer utlisateur co
   useEffect(() => {
     try {
       const storedUser = JSON.parse(localStorage.getItem('user')).id;
@@ -25,7 +27,7 @@ function Profil(props) {
       console.log('Erreur lors du parsing du JSON depuis le localStorage');
     }
   }, [setIdUser]);
-  console.log("connecte en tant que : "+iduser);
+  
 
   const [varPhoto, setVarPhoto] = useState('step-primary');
   const [varImFond, setVarImFond] = useState('step-primary');
@@ -41,12 +43,14 @@ function Profil(props) {
         break;
       }
     }
-
+ 
     let completedFields = 0;
 
-    console.log("verif : "+compt); //vaut 0 ?  
-    console.log(utilisateur[iduser-1]); //car la tableau d'utilisateurs commence à 0 ici mais à 1 dans la BDD
+    console.log("connecte en tant que : "+iduser);
+    console.log("verif : "+compt); //vaut 0 ?                                            /******* PB ICI */
+    console.log(utilisateur[iduser-1]); //iduser-1 car la tableau d'utilisateurs commence à 0 ici (et à 1 dans la BDD)
 
+    //verifier si les champs sont remplis
     if (utilisateur[compt]?.PHOTO !== '') {
       completedFields++;
     }
@@ -59,7 +63,8 @@ function Profil(props) {
     if (utilisateur[compt]?.FORMATION !== null) {
       completedFields++;
     }
-
+    
+    //calculer % de champs remplis du profil
     const totalFields = 4; 
     const profileCompletion = (completedFields / totalFields) * 100;
     setNbChampsRemplis(profileCompletion);

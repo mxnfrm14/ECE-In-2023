@@ -7,25 +7,26 @@ import withAuth from './withAuth';
 import { useEffect, useState } from 'react';
 
 //fonction determine si l'USERID du msg est le meme que l'utilisateur ou nn
-  function quelSensMsg(idutil, idenvoyeur){
-    const[sensMsg, setSensMsg] = useState(0); //0 ou 1 considere comme msg reçu par defaut
-    useEffect(() => { 
-      //si le msg est envoyé par la personne connectée
-      if(idenvoyeur == idutil){
-        //le msg est envoyé par l'utilisateur (et non reçu)
-        setSensMsg(1);
-        console.log("msg envoye :"+idenvoyeur);
-      }
+function quelSensMsg(idutil, idenvoyeur){
+  const[sensMsg, setSensMsg] = useState(0); //0 ou 1 considere comme msg reçu par defaut
+  useEffect(() => { 
+    //si le msg est envoyé par la personne connectée
+    if(idenvoyeur === idutil){
+      //le msg est envoyé par l'utilisateur (et non reçu)
+      setSensMsg(1);
+      console.log("msg envoye :"+idenvoyeur);
+    }
 
-    }, []);
-    return(
-        sensMsg
-    );
-  }
+  }, []);
+  return(
+      sensMsg
+  );
+}
 
+//page Messagerie
  function Messagerie(props) {
   const isAuthenticated = true;
-
+ 
   const content = props.users_data;
   console.log(content);
   const [iduser, setIdUser] = useState(0);
@@ -47,7 +48,7 @@ import { useEffect, useState } from 'react';
 
     ///jsp ce que je dois mettre dedans et ds les crochets
   }, []);
-  console.log("iduser :"+iduser);
+  console.log("iduser av return:"+iduser); 
 
   //console.log("content length: "+content.length);
 
@@ -91,12 +92,12 @@ import { useEffect, useState } from 'react';
 
           {/** Zone d'une discussion  */}
            <div className='space-y-4 col-span-2 w-5/6 mx-auto bg-base-300 rounded-lg shadow-md'>
-    
+              { console.log("iduser return:"+iduser)}
               {/* Fonction d'affichage remplie avec les résultats de la requete SQL dans api/getMsgs.js */}
               {content.map((post) => (
                 <TextMsg
                   texte = {post.TEXTE}
-                  nomdest = {post.PRENOM +" "+ post.NOM}
+                  nomdest = {post.PRENOM +" "+ post.NOM +post.USERID}  
                   pfpdest = {post.PHOTO}
                   recu0envoye1 = {quelSensMsg(iduser, post.USERID)} // 0 ou 1 renvoyé par la fonction
                   
