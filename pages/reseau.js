@@ -38,6 +38,7 @@ function Reseau(props) {
           const user = await fetch(`/api/getUser?IDENTIFIANT=${obj.target}`);
           const user_data = await user.json();
           obj.PRENOM = user_data.results[0].PRENOM;
+          obj.NOM = user_data.results[0].NOM;
           obj.PSEUDO = user_data.results[0].PSEUDO;
           obj.PHOTO = user_data.results[0].PHOTO;
           obj.DESCRIPTION = user_data.results[0].DESCRIPTION;
@@ -89,7 +90,7 @@ function Reseau(props) {
                     <RowTable
                       link={user.NOM}
                       key={user.IDENTIFIANT}
-                      nom={user.target_txt}
+                      nom={user.NOM}
                       prenom={user.PRENOM}
                       pseudo={user.PSEUDO}
                       photo={user.PHOTO}
