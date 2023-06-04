@@ -25,6 +25,9 @@ function Home(props) {
   const [heure, setHeure ] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
 
+  console.log('--------------------------------------');
+  console.log(posts);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,11 +52,50 @@ function Home(props) {
     request.send(formData);
   };
 
+  const [contentPost, setContentPost] = useState('');
+  const [lieuPost, setLieuPost] = useState('');
+  const [selectedFilesPost, setSelectedFilesPost] = useState([]);
+  const [activeOption, setActiveOption] = useState("public");
+
+
+  const handleSubmitPost = async (e) => {
+    e.preventDefault();
+
+    const formDataPost = new FormData();
+    formDataPost.append('content', contentPost);
+    formDataPost.append('lieu', lieuPost);
+    const heurePost = new Date().toLocaleTimeString();
+    console.log(heurePost);
+    formDataPost.append('heure', heurePost);
+    const datePost = new Date().toLocaleDateString();
+    formDataPost.append('date', datePost);
+    if(selectedFilesPost.length > 0){
+      formDataPost.append('file', selectedFilesPost[0]);
+    }
+    formDataPost.append('option', activeOption);
+    formDataPost.append('userid', JSON.parse(localStorage.getItem('user')).id);
+    const API_ENDPOINT = "/api/createPost";
+    const request = new XMLHttpRequest();
+    request.open("POST", API_ENDPOINT, true);
+
+    request.onreadystatechange = () => {
+      if (request.readyState === 4 && request.status === 200) {
+        console.log(request.responseText);
+        window.location.reload();
+      }
+    };
+    console.log(formDataPost);
+    request.send(formDataPost);
+    
+  };
+
   return (
     <>
       <Head>
         <title> Accueil | ECE In </title>
       </Head>
+
+      {/* Créer un post */}
 
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal">
@@ -66,26 +108,40 @@ function Home(props) {
               <label className="label">
                 <span className="label-text">Contenu du poste</span>
               </label>
-              <textarea className="textarea textarea-bordered h-24" placeholder="Contenu du poste.."></textarea>
+              <textarea className="textarea textarea-bordered h-24" placeholder="Contenu du poste.." onChange={(e) => setContentPost(e.target.value)} ></textarea>
             </div>
+            <label className="label">
+                <span className="label-text">Lieu de l'évènement</span>
+              </label>
+              <input type="text" placeholder="Lieu de l'évènement.." className="input input-bordered w-full max-w-xs" onChange={(e) => setLieuPost(e.target.value)} />
+             
             <label className="label">
               <span className="label-text">Choisir une photo ou vidéo</span>
             </label>
-            <input type="file" className="file-input file-input-bordered w-full max-w-xs" />
+            {/* <input type="file" className="file-input file-input-bordered w-full max-w-xs" /> */}
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full max-w-xs"
+              accept=".jpg, .png"
+              onChange={(e) => setSelectedFilesPost(e.target.files)}
+            />
+            
           </div>
           <div className="dropdown dropdown-top">
             <label tabIndex={0} className="btn btn-accent mt-5">Qui peut le voir ?</label>
             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a><BsGlobeAmericas/>Public</a></li>
-              <li><a><BsFillLockFill/>Privé</a></li>
-              <li><a><BsPeopleFill/>Amis proches</a></li>
+              <li><a className={activeOption === "public" ? "active" : ""} onClick={() => setActiveOption("public")}><BsGlobeAmericas/>Public</a></li>
+              <li><a className={activeOption === "private" ? "active" : ""} onClick={() => setActiveOption("private")}><BsFillLockFill/>Privé</a></li>
+              <li><a className={activeOption === "friends" ? "active" : ""} onClick={() => setActiveOption("friends")}><BsPeopleFill/>Amis proches</a></li>
             </ul>
           </div>
           <div className="modal-action">
-           <button href="#" className="btn btn-secondary">Publier !</button>
+           <button href="#" className="btn btn-secondary" onClick={handleSubmitPost}>Publier !</button>
           </div>
         </div>
       </div>
+
+      {/* Modal pour créer un évènement */}
 
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <div className="modal">
@@ -211,6 +267,7 @@ function Home(props) {
             date = {post.DATE}
             heure = {post.HEURE}
             link={`/posts/${post.POSTID}`}
+            imgPost={post?.MEDIA}
           />
         ))}
 

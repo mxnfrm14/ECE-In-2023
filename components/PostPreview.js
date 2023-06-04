@@ -4,7 +4,7 @@ import { BiShare, BiCopy, BiMailSend } from 'react-icons/bi';
 import {FiTwitter} from 'react-icons/fi';
 import { useState, useEffect } from 'react';
 
-function Post({ pseudo, role, content, lieu, date, heure, link, id }) {
+function Post({ pseudo, role, content, lieu, date, heure, link, id, imgPost }) {
 
   // const [isLiked, setIsLiked] = useState(false);
   const [pfp, setPfp] = useState('https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0');
@@ -27,22 +27,29 @@ function Post({ pseudo, role, content, lieu, date, heure, link, id }) {
 
   return (
     <>
-    <figure class="md:flex bg-base-200 rounded-xl p-8 md:p-0 w-11/12">
-        <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src={pfp} alt="" width="384" height="512"/>
-        {/* <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src="https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0" alt="" width="384" height="512"/> */}
-        <div class="pt-6 md:p-8 text-center md:text-left space-y-4  w-full">
+    <figure className="md:flex bg-base-200 rounded-xl p-8 md:p-0 w-11/12">
+        <img className="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src={pfp} alt="" width="384" height="512"/>
+        <div className="pt-6 md:p-8 text-center md:text-left space-y-4  w-full">
           <div className="card-body">
-                <p class="text-lg font-medium">
+                <div className="flex">
+                <p className="text-lg font-medium">
                     {content}
                 </p>
-              <figcaption class="font-medium">
+                { 
+                  // isLiked ? <HeartIcon className="text-red-500" onClick={() => setIsLiked(!isLiked)}/> : <HeartIcon className="text-gray-500" onClick={() => setIsLiked(!isLiked)}/>
+                  imgPost ? <img id="fixit"  src={imgPost} alt="" width="384" height="512"/> : <></>
+                }
+                </div>
+
+              <figcaption className="font-medium">
                 <h2 className="card-title text-primary">
                   {pseudo}
                 </h2>
-                <div class="text-slate-700 dark:text-slate-500">
+
+                <div className="text-slate-700 dark:text-slate-500">
                   {role}
                 </div>
-                <div class="text-slate-700 dark:text-slate-500 w-full flex">
+                <div className="text-slate-700 dark:text-slate-500 w-full flex">
                   À {lieu} <span className='ml-auto'>Le { date + ' à ' + heure }</span>
                 </div>
               </figcaption>

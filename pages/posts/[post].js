@@ -53,6 +53,7 @@ export default function Tag_Page(props) {
                 date = {data.DATE}
                 heure = {data.HEURE}
                 link={`/posts/${data.POSTID}`}
+                imgPost={data.MEDIA ? `/` + data.MEDIA : ''}
               />
             </div>
         </Layout>

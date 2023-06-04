@@ -52,16 +52,16 @@ const header = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a href='reseau'>Mon Réseau</a>
+                <a href='/reseau'>Mon Réseau</a>
               </li>
               <li>
-                <a href='notifications'>Notifications</a>
+                <a href='/notifications'>Notifications</a>
               </li>
               <li>
-                <a href='messagerie'>Messagerie</a>
+                <a href='/messagerie'>Messagerie</a>
               </li>
               <li>
-                <a href='emplois'>Emplois</a>
+                <a href='/emplois'>Emplois</a>
               </li>
             </ul>
           </div>
@@ -87,16 +87,16 @@ const header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 bg-neutral right-0"
             >
               <li>
-                <a href='reseau'>Mon Réseau</a>
+                <a href='/reseau'>Mon Réseau</a>
               </li>
               <li>
-                <a href='notifications'>Notifications</a>
+                <a href='/notifications'>Notifications</a>
               </li>
               <li>
-                <a href='messagerie'>Messagerie</a>
+                <a href='/messagerie'>Messagerie</a>
               </li>
               <li>
-                <a href='emplois'>Emplois</a>
+                <a href='/emplois'>Emplois</a>
               </li>
             </ul>
           </div>
