@@ -84,7 +84,7 @@ function Home(props) {
       <div className="container mx-auto flex flex-col items-center gap-10" id="content">
 
         <div className="navbar bg-neutral text-primary-content rounded-xl mt-6">
-          <a className="btn btn-ghost normal-case text-xl">Évènements à venir</a>
+          <a className="btn btn-ghost normal-case text-xl">Évènements de la semaine</a>
           
         </div>
 
