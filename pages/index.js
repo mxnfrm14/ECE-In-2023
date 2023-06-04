@@ -17,13 +17,11 @@ function Home(props) {
   const users = props.users_data;
   const posts = props.posts_data;
   const events = props.events_data;
-  console.log(posts);
-
-
-  // Envoi du nouveau evenement
 
   const [activeDate, setActiveDate] = useState(null);
   const [title, setTitle] = useState('');
+  const [lieu, setLieu ] = useState('');
+  const [heure, setHeure ] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -32,10 +30,21 @@ function Home(props) {
     const formData = new FormData();
     formData.append('date', activeDate);
     formData.append('title', title);
+    formData.append('lieu', lieu);
+    formData.append('heure', heure);
+    const API_ENDPOINT = "/api/createEvent";
+    const request = new XMLHttpRequest();
+    request.open("POST", API_ENDPOINT, true);
+    request.onreadystatechange = () => {
+      if (request.readyState === 4 && request.status === 200) {
+        console.log(request.responseText);
+      }
+    };
     for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append('files', selectedFiles[i]);
+      formData.append('files', selectedFiles[i])
     }
     console.log(formData);
+    request.send(formData);
   };
 
   return (
@@ -86,8 +95,21 @@ function Home(props) {
               <label className="label">
                 <span className="label-text">Nom de l'évènement</span>
               </label>
-              <input type="text" placeholder="Nom de l'évènement.." className="input input-bordered w-full max-w-xs" />
+              <input type="text" placeholder="Nom de l'évènement.." className="input input-bordered w-full max-w-xs" onChange={(e) => setTitle(e.target.value)} />
             </div>
+            <label className="label">
+                <span className="label-text">Lieu de l'évènement</span>
+              </label>
+              <input type="text" placeholder="Lieu de l'évènement.." className="input input-bordered w-full max-w-xs" onChange={(e) => setLieu(e.target.value)} />
+              <label className="label">
+                <span className="label-text">Heure de l'évènement</span>
+              </label>
+              {/* <input type="text" placeholder="Heure de l'évènement.." className="input input-bordered w-full max-w-xs" onChange={(e) => setHeure(e.target.value)} /> */}
+              <input
+                type="time"
+                className="input input-bordered w-full max-w-xs"
+                onChange={(e) => setHeure(e.target.value)}
+              />
             <label className="label">
               <span className="label-text">Choisir des photos ou vidéos</span>
             </label>
@@ -96,6 +118,7 @@ function Home(props) {
               className="file-input file-input-bordered w-full max-w-xs"
               multiple
               accept=".jpg, .png"
+              onChange={(e) => setSelectedFiles(e.target.files)}
             />
           </div>
           <Calendar setActiveDate={setActiveDate}/>
