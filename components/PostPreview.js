@@ -3,7 +3,11 @@ import { AiOutlineComment } from 'react-icons/ai';
 import { BiShare, BiCopy, BiMailSend } from 'react-icons/bi';
 import {FiTwitter} from 'react-icons/fi';
 
-function Post({ pseudo, role, content, lieu, date, heure }) {
+function Post({ pseudo, role, content, lieu, date, heure, link }) {
+  // const copyLink = () => {
+  //   navigator.clipboard.writeText(link);
+  // }
+  
   return (
     <>
     <figure class="md:flex bg-base-200 rounded-xl p-8 md:p-0 w-11/12">
@@ -46,7 +50,9 @@ function Post({ pseudo, role, content, lieu, date, heure }) {
                 <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                   <li><a><FiTwitter/>Twitter</a></li>
                   <li><a><BiMailSend/>E-mail</a></li>
-                  <li><a><BiCopy/>Copier le lien</a></li>
+                  <li><a onClick={() => {navigator.clipboard.writeText(document.URL + link)}}><BiCopy/>Copier le lien</a></li>
+                  <li><a href={link}><BiShare/>En voir plus..</a></li>
+                  {/* <li><a href={link}><BiCopy/>Copier le lien</a></li> */}
                 </ul>
               </div>
 
