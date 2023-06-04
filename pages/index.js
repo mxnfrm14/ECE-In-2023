@@ -11,6 +11,7 @@ import Calendar from '@/components/Calendar';
 import withAuth from './withAuth';
 import { useState } from 'react';
 
+
 function Home(props) {
   const isAuthenticated = true;
 
@@ -38,6 +39,7 @@ function Home(props) {
     request.onreadystatechange = () => {
       if (request.readyState === 4 && request.status === 200) {
         console.log(request.responseText);
+        window.location.reload();
       }
     };
     for (let i = 0; i < selectedFiles.length; i++) {
