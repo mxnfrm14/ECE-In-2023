@@ -6,6 +6,9 @@ import EcrireMsg from '../components/EcrireMsg';
 import withAuth from './withAuth';
 import { useEffect, useState } from 'react';
 import AlertComponent from '@/components/AlertePostule';
+import { useRouter } from 'next/router';
+import {BsCameraVideo} from 'react-icons/bs';
+
 
 //fonction 
 /*
@@ -57,14 +60,14 @@ function chargerMsgs(idamitie){
     }, [idamitie]);
     console.log("retour "+retour);
     return(retour);
-  
-
 }*/
 
 
-//page Messagerie **************************************************************************************
+//****************************************************** page Messagerie *****************************************************************************
  function Messagerie(props) {
   const isAuthenticated = true;
+  const router = useRouter(); //pour le zoom
+
  //pour les discussions
  const [discu, setDiscu] = useState([]);
 
@@ -76,10 +79,41 @@ function chargerMsgs(idamitie){
   const [compt, setCompt] = useState(0);
   const[sensMsg, setSensMsg] = useState(0); //0 ou 1 considere comme msg reçu par defaut
 
+  //info pour envoyer un msg
+  // pour --> friendid, nummsg, userid, texte
+  const [idamitie, setIdamitie] = useState('');
+  const [nummsg, setNummsg] = useState('');
+  const [monId, setMonId ] = useState('');
+  const [texte, setTexte] = useState('');
+
+  //Pour envoyer un message ***************************************************
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //ideamitie, nummsg, userid, texte
+    const formData = new FormData(); //genere un form (pas affiche sur la page)
+    formData.append('IDamitie', idamitie);
+    formData.append('numMsg', nummsg);
+    formData.append('monID', monId);
+    formData.append('texte', texte);
+    const API_ENDPOINT = "/api/sendMsg";
+    const request = new XMLHttpRequest();
+    request.open("POST", API_ENDPOINT, true);
+    request.onreadystatechange = () => {
+      if (request.readyState === 4 && request.status === 200) {
+        console.log(request.responseText);
+        window.location.reload();
+      }
+    };
+   
+    console.log(formData);
+    request.send(formData);
+  };
+
+
   //récuperer l'id (numero) de la personne connectée : possible uniquemt pr navigateur (pas serveur)
   //la page s'execute donc cote navigateur 
 
-  //recup une discussion ************************************
+  //recup une discussion ***************************************************
   var friendid=6;
   useEffect(() => { 
     const fetchData = async () => {
@@ -107,11 +141,15 @@ function chargerMsgs(idamitie){
             if(obj.target_userid === me){
               //le msg est envoyé par l'utilisateur (et non reçu)
               obj.target_sensmsg = 1;
-              console.log("msg envoye par util :"+obj.target_userid);
+              //console.log("msg envoye par util :"+obj.target_userid);
             }
             else{
               obj.target_sensmsg = 0;
             }
+            setIdamitie(obj.target_friendid);
+            setNummsg(obj.target_nummsg +1);
+            setMonId(me);
+            //et le txt sera ecrit apres
         });
         setContent(users_data);
         //console.log("taille sortie :"+users_data.length);
@@ -125,7 +163,10 @@ function chargerMsgs(idamitie){
     fetchData(); 
   }, []); 
 
-  //récuperer les discussions ************************************
+
+  console.log("AAA id amis"+idamitie);
+
+  //récuperer les discussions *************************************************
   useEffect(() => { 
     const fetchData = async () => {
       try {
@@ -159,11 +200,10 @@ function chargerMsgs(idamitie){
     fetchData(); 
   }, []);
 
-  
-
   if (loading) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <>
@@ -205,7 +245,14 @@ function chargerMsgs(idamitie){
                 />  
                 ))} 
 
-              <EcrireMsg/>
+              {/**<EcrireMsg/>*/}
+              {/* Zone envoi msg */}
+              <div className="m-4 mt-4 max-w-lg mx-auto">
+                <button  onClick={()=>router.push('https://us05web.zoom.us/j/86825653047?pwd=YzJiS0UvcXRGdTViUDNmM3V5OXB6Zz09')} className="btn btn-primary m-1"><BsCameraVideo/></button>
+                <input type="text" placeholder="Type here" className="input input-bordered input-primary w-2/4 max-w-lg m-1" onChange={(e) => setTexte(e.target.value)} />
+                <button className="btn btn-outline btn-primary m-1"  onClick={handleSubmit} >Envoyer</button>
+              </div>
+
            </div>
             
 

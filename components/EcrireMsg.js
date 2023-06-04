@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import {BsCameraVideo} from 'react-icons/bs';
 
-function EcrireMsg({ vari }) {
+function EcrireMsg({ }) {
     const router = useRouter();
     
     var zone=
@@ -11,7 +11,6 @@ function EcrireMsg({ vari }) {
        <button className="btn btn-outline btn-primary m-1">Envoyer</button>
     </div>
     ; 
-
 
     return (
 

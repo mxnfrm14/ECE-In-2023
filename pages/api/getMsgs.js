@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     JOIN utilisateur 
       ON (utilisateur.USERID = amis.USERID1 OR utilisateur.USERID = amis.USERID2) 
       AND utilisateur.USERID = message.USERID 
-    WHERE (amis.USERID1 = ${moi} OR amis.USERID2 = ${moi}) AND message.FRIENDID = ${ami}
+    WHERE (amis.USERID1 = ${moi} OR amis.USERID2 = ${moi}) 
     ORDER BY message.FRIENDID, message.NUMEROMSG ;
     `; //on obtient les informations des messages envoyés et toutes les infos sur l'utilisateur qui l'envoie
     const values = [];
@@ -31,3 +31,5 @@ export default async function handler(req, res) {
   }
 
 } 
+
+// WHERE ... AND message.FRIENDID = ${ami}
