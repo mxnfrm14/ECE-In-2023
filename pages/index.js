@@ -217,6 +217,7 @@ function Home(props) {
             lieu = {post.LIEU}
             date = {post.DATE}
             heure = {post.HEURE}
+            link={`/posts/${post.POSTID}`}
           />
         ))}
 
