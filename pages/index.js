@@ -14,6 +14,7 @@ function Home(props) {
 
   const users = props.users_data;
   const posts = props.posts_data;
+  const events = props.events_data;
   console.log(posts);
 
   return (
@@ -87,9 +88,13 @@ function Home(props) {
           
         </div>
 
-        <EventPreview/>
+        {/* <EventPreview/>
 
-        <EventPreview/>
+        <EventPreview/> */}
+
+      {events.map((event, index) => (
+        <EventPreview key={index} event={event} />
+      ))}
 
       </div>
 
@@ -179,10 +184,15 @@ export async function getStaticProps() {
   const posts = await posts_raw.json()
   const posts_data = posts.results;
 
+  const events_raw = await fetch('http://localhost:3000/api/getEvents')
+  const events = await events_raw.json()
+  const events_data = events.results;
+
   return {
     props: {
       users_data,
-      posts_data
+      posts_data,
+      events_data
     }
   }
 }

@@ -20,7 +20,7 @@ const header = () => {
       try {
         const me = JSON.parse(localStorage.getItem('user')).id;
 
-        const users_raw = await fetch(`http://localhost:3000/api/getUser?IDENTIFIANT=${me}`);
+        const users_raw = await fetch(`/api/getUser?IDENTIFIANT=${me}`);
 
         const users = await users_raw.json();
         const users_data = users.results || [];
