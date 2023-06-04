@@ -66,7 +66,7 @@ export default function EventPreview(props) {
           ))}
         </div>
       </figure>
-      <div className="card-body">
+      <div className="card-body w-11/12">
         <h2 className="card-title">{TITRE}</h2>
         <p>{DATE}</p>
         <div className="card-actions justify-end">
