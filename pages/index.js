@@ -7,7 +7,9 @@ import {AiOutlinePlus, AiFillPushpin} from 'react-icons/ai';
 import {BsGlobeAmericas, BsPeopleFill, BsFillLockFill} from 'react-icons/bs';
 import {BsMailbox2, BsFillTelephoneFill} from 'react-icons/bs';
 import MapComponent from '@/components/MapComponent';
+import Calendar from '@/components/Calendar';
 import withAuth from './withAuth';
+import { useState } from 'react';
 
 function Home(props) {
   const isAuthenticated = true;
@@ -16,6 +18,25 @@ function Home(props) {
   const posts = props.posts_data;
   const events = props.events_data;
   console.log(posts);
+
+
+  // Envoi du nouveau evenement
+
+  const [activeDate, setActiveDate] = useState(null);
+  const [title, setTitle] = useState('');
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('date', activeDate);
+    formData.append('title', title);
+    for (let i = 0; i < selectedFiles.length; i++) {
+      formData.append('files', selectedFiles[i]);
+    }
+    console.log(formData);
+  };
 
   return (
     <>
@@ -55,6 +76,35 @@ function Home(props) {
         </div>
       </div>
 
+      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box max-w-2xl relative">
+          <label htmlFor="my-modal-4" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <h3 className="text-lg font-bold"> Ajouter un évènement</h3>
+          <div className="form-control w-full max-w-xs">
+          <div className="form-control">
+              <label className="label">
+                <span className="label-text">Nom de l'évènement</span>
+              </label>
+              <input type="text" placeholder="Nom de l'évènement.." className="input input-bordered w-full max-w-xs" />
+            </div>
+            <label className="label">
+              <span className="label-text">Choisir des photos ou vidéos</span>
+            </label>
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full max-w-xs"
+              multiple
+              accept=".jpg, .png"
+            />
+          </div>
+          <Calendar setActiveDate={setActiveDate}/>
+          <div className="modal-action">
+           <button href="#" className="btn btn-secondary" onClick={handleSubmit} >Publier !</button>
+          </div>
+        </div>
+      </div>
+
       <Layout>
         
       <div className="hero min-h-screen" style={{ backgroundImage: `url("https://news.microsoft.com/wp-content/uploads/prod/sites/113/2018/04/ECE-Paris-Orange-Microsoft.jpg")` }}>
@@ -81,11 +131,19 @@ function Home(props) {
 
       {/* EVENT */}
 
-      <div className="container mx-auto flex flex-col items-center gap-10" id="content">
+      <div className="container mx-auto flex flex-col items-center gap-10" id="feed">
 
         <div className="navbar bg-neutral text-primary-content rounded-xl mt-6">
-          <a className="btn btn-ghost normal-case text-xl">Évènements de la semaine</a>
-          
+          <div className="flex-1">
+          <a className="btn btn-ghost normal-case text-xl">Evènements de la semaine</a>
+          </div>
+          <div className="flex-none">
+          <label htmlFor="my-modal-4" className="btn btn-primary gap-2">
+            <AiOutlinePlus size={24}/>
+            Ajouter un évènement
+          </label>
+
+          </div>
         </div>
 
         {/* <EventPreview/>
@@ -111,6 +169,7 @@ function Home(props) {
             <AiOutlinePlus size={24}/>
             Ajouter un post
           </label>
+          
 
           </div>
         </div>

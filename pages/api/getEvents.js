@@ -7,9 +7,6 @@ export default async function handler(req, res) {
   try {
     dbconnection.connect();
     console.log('DB connected');
-    // const query = `
-    //   SELECT * FROM evenementpublic
-    // `;
     const query = `
       SELECT evenementpublic.*, eventmedia.*
       FROM evenementpublic
