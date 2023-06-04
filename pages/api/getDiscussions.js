@@ -7,20 +7,17 @@ export default async function handler(req, res) {
 
   try {
     var moi = req.query.IDENTIFIANT; //recuperer l'id passé en parametre de la requet http
-    var ami = req.query.FRIENDID; //recuperer l'id du lien d'ami passé en parametre de la requet http
     dbconnection.connect();
     console.log('DB connected');
     const query = `
-    SELECT message.*, utilisateur.*
-    FROM message 
-    JOIN amis 
-      ON message.FRIENDID = amis.FRIENDID 
+    SELECT amis.*, utilisateur.PSEUDO
+    FROM amis 
     JOIN utilisateur 
       ON (utilisateur.USERID = amis.USERID1 OR utilisateur.USERID = amis.USERID2) 
-      AND utilisateur.USERID = message.USERID 
-    WHERE (amis.USERID1 = ${moi} OR amis.USERID2 = ${moi}) AND message.FRIENDID = ${ami}
-    ORDER BY message.FRIENDID, message.NUMEROMSG ;
-    `; //on obtient les informations des messages envoyés et toutes les infos sur l'utilisateur qui l'envoie
+      AND utilisateur.USERID != ${moi}
+    WHERE (amis.USERID1 = ${moi} OR amis.USERID2 = ${moi}) 
+    ORDER BY amis.FRIENDID;
+    `; //on obtient les amis de l'utilisateurs (discussions possibles)
     const values = [];
     const [data] = await dbconnection.query(query, values);
     dbconnection.end();
