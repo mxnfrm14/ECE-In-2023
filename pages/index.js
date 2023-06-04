@@ -199,17 +199,10 @@ function Home(props) {
           </div>
         </div>
 
-        {/* {users.map((user) => (
-          <PostPreview
-            key={user.USERID}
-            pseudo={user.PSEUDO}
-            role={user.ROLE}
-          />
-        ))} */}
-
         {/* Afficher les publications à partir de la BDD */}
         {posts.map((post) => (
           <PostPreview
+            id={post.USERID}
             key={post.POSTID}
             pseudo={post.PSEUDO}
             role={post.ROLE}

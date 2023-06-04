@@ -24,6 +24,9 @@ export default function Tag_Page(props) {
             setContent(user_data);
             setLoading(false);
             setUtilisateur(user_data[0]);
+
+            console.log('-----------------------------------------------');
+            console.log(data.USERID);
     
           } catch (error) {
             console.error(error);
@@ -42,6 +45,7 @@ export default function Tag_Page(props) {
             <div className="flex flex-col items-center justify-center mt-20">
             <h1>Post de {utilisateur.PSEUDO}</h1>
             <PostPreview
+                id={data.USERID}
                 pseudo={utilisateur.PSEUDO}
                 role={data.ROLE}
                 content={data.TEXTE}

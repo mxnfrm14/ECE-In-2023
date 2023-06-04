@@ -2,16 +2,34 @@ import HeartIcon from './HeartIcon';
 import { AiOutlineComment } from 'react-icons/ai';
 import { BiShare, BiCopy, BiMailSend } from 'react-icons/bi';
 import {FiTwitter} from 'react-icons/fi';
+import { useState, useEffect } from 'react';
 
-function Post({ pseudo, role, content, lieu, date, heure, link }) {
-  // const copyLink = () => {
-  //   navigator.clipboard.writeText(link);
-  // }
+function Post({ pseudo, role, content, lieu, date, heure, link, id }) {
+
+  // const [isLiked, setIsLiked] = useState(false);
+  const [pfp, setPfp] = useState('https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0');
   
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user_raw = await fetch(`/api/getUser?IDENTIFIANT=${id}`);
+        const user = await user_raw.json();
+        const user_data = user.results || [];
+        const urlPfp = '/' + user_data[0].PHOTO;
+        setPfp(urlPfp);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
     <figure class="md:flex bg-base-200 rounded-xl p-8 md:p-0 w-11/12">
-        <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src="https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0" alt="" width="384" height="512"/>
+        <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src={pfp} alt="" width="384" height="512"/>
+        {/* <img class="object-cover w-24 h-24 md:w-48 md:h-auto md:rounded-xl rounded-full md:mx-0 mx-auto" src="https://media.licdn.com/dms/image/C4E03AQFEo5Tb_-L_vw/profile-displayphoto-shrink_800_800/0/1667984961925?e=2147483647&v=beta&t=q6ihAEkfP7Fgjuet886Zv7qYKwXp5NTcu8gHUv1Lc-0" alt="" width="384" height="512"/> */}
         <div class="pt-6 md:p-8 text-center md:text-left space-y-4  w-full">
           <div className="card-body">
                 <p class="text-lg font-medium">
@@ -52,7 +70,6 @@ function Post({ pseudo, role, content, lieu, date, heure, link }) {
                   <li><a><BiMailSend/>E-mail</a></li>
                   <li><a onClick={() => {navigator.clipboard.writeText(document.URL + link)}}><BiCopy/>Copier le lien</a></li>
                   <li><a href={link}><BiShare/>En voir plus..</a></li>
-                  {/* <li><a href={link}><BiCopy/>Copier le lien</a></li> */}
                 </ul>
               </div>
 
